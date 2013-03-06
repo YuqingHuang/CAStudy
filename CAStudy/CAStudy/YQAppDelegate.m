@@ -7,6 +7,7 @@
 //
 
 #import "YQAppDelegate.h"
+#import "YQListViewController.h"
 
 @implementation YQAppDelegate
 
@@ -15,6 +16,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    YQListViewController *listVC = [[YQListViewController alloc] initWithNibName:@"YQListViewController" bundle:nil];
+    self.window.rootViewController = listVC;
     [self.window makeKeyAndVisible];
     return YES;
 }
