@@ -24,6 +24,7 @@
 		441E93F616E63BBC0027CDAF /* YQListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 441E93F416E63BBC0027CDAF /* YQListViewController.m */; };
 		441E93F716E63BBC0027CDAF /* YQListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 441E93F516E63BBC0027CDAF /* YQListViewController.xib */; };
 		441E93FB16E63C400027CDAF /* YQListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 441E93FA16E63C400027CDAF /* YQListView.m */; };
+		49CE964116E888E90025B70A /* YQSwipeGuestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CE964016E888E90025B70A /* YQSwipeGuestureRecognizer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		441E93F516E63BBC0027CDAF /* YQListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQListViewController.xib; sourceTree = "<group>"; };
 		441E93F916E63C400027CDAF /* YQListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YQListView.h; path = View/YQListView.h; sourceTree = "<group>"; };
 		441E93FA16E63C400027CDAF /* YQListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YQListView.m; path = View/YQListView.m; sourceTree = "<group>"; };
+		49CE963F16E888E90025B70A /* YQSwipeGuestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YQSwipeGuestureRecognizer.h; path = Util/YQSwipeGuestureRecognizer.h; sourceTree = "<group>"; };
+		49CE964016E888E90025B70A /* YQSwipeGuestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YQSwipeGuestureRecognizer.m; path = Util/YQSwipeGuestureRecognizer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +123,7 @@
 		441E93BE16E63A980027CDAF /* CAStudy */ = {
 			isa = PBXGroup;
 			children = (
+				49CE963A16E87E050025B70A /* Util */,
 				441E93F816E63C1E0027CDAF /* View */,
 				441E93F216E63BBC0027CDAF /* ViewController */,
 				441E93C716E63A980027CDAF /* YQAppDelegate.h */,
@@ -179,6 +183,15 @@
 				441E93FA16E63C400027CDAF /* YQListView.m */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		49CE963A16E87E050025B70A /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				49CE963F16E888E90025B70A /* YQSwipeGuestureRecognizer.h */,
+				49CE964016E888E90025B70A /* YQSwipeGuestureRecognizer.m */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,6 +309,7 @@
 				441E93C916E63A980027CDAF /* YQAppDelegate.m in Sources */,
 				441E93F616E63BBC0027CDAF /* YQListViewController.m in Sources */,
 				441E93FB16E63C400027CDAF /* YQListView.m in Sources */,
+				49CE964116E888E90025B70A /* YQSwipeGuestureRecognizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +476,7 @@
 				441E93E916E63A990027CDAF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		441E93EA16E63A990027CDAF /* Build configuration list for PBXNativeTarget "CAStudyTests" */ = {
 			isa = XCConfigurationList;
@@ -470,6 +485,7 @@
 				441E93EC16E63A990027CDAF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

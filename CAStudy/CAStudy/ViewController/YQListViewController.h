@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "YQListView.h"
 
-@interface YQListViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface YQListViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *list;
 
 @end
