@@ -24,7 +24,9 @@
 		441E93F616E63BBC0027CDAF /* YQListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 441E93F416E63BBC0027CDAF /* YQListViewController.m */; };
 		441E93F716E63BBC0027CDAF /* YQListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 441E93F516E63BBC0027CDAF /* YQListViewController.xib */; };
 		441E93FB16E63C400027CDAF /* YQListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 441E93FA16E63C400027CDAF /* YQListView.m */; };
-		49CE964116E888E90025B70A /* YQSwipeGuestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CE964016E888E90025B70A /* YQSwipeGuestureRecognizer.m */; };
+		4427E95D16E8F57600D72BEF /* YQTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427E95C16E8F57600D72BEF /* YQTableCell.m */; };
+		4427E96016E8F76F00D72BEF /* YQCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4427E95F16E8F76F00D72BEF /* YQCellView.xib */; };
+		49CE964116E888E90025B70A /* YQSwipeGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CE964016E888E90025B70A /* YQSwipeGestureRecognizer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,8 +64,11 @@
 		441E93F516E63BBC0027CDAF /* YQListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQListViewController.xib; sourceTree = "<group>"; };
 		441E93F916E63C400027CDAF /* YQListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YQListView.h; path = View/YQListView.h; sourceTree = "<group>"; };
 		441E93FA16E63C400027CDAF /* YQListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YQListView.m; path = View/YQListView.m; sourceTree = "<group>"; };
-		49CE963F16E888E90025B70A /* YQSwipeGuestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YQSwipeGuestureRecognizer.h; path = Util/YQSwipeGuestureRecognizer.h; sourceTree = "<group>"; };
-		49CE964016E888E90025B70A /* YQSwipeGuestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YQSwipeGuestureRecognizer.m; path = Util/YQSwipeGuestureRecognizer.m; sourceTree = "<group>"; };
+		4427E95B16E8F57600D72BEF /* YQTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YQTableCell.h; path = View/YQTableCell.h; sourceTree = "<group>"; };
+		4427E95C16E8F57600D72BEF /* YQTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YQTableCell.m; path = View/YQTableCell.m; sourceTree = "<group>"; };
+		4427E95F16E8F76F00D72BEF /* YQCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = YQCellView.xib; path = View/YQCellView.xib; sourceTree = "<group>"; };
+		49CE963F16E888E90025B70A /* YQSwipeGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YQSwipeGestureRecognizer.h; path = Util/YQSwipeGestureRecognizer.h; sourceTree = "<group>"; };
+		49CE964016E888E90025B70A /* YQSwipeGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YQSwipeGestureRecognizer.m; path = Util/YQSwipeGestureRecognizer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +186,9 @@
 			children = (
 				441E93F916E63C400027CDAF /* YQListView.h */,
 				441E93FA16E63C400027CDAF /* YQListView.m */,
+				4427E95B16E8F57600D72BEF /* YQTableCell.h */,
+				4427E95C16E8F57600D72BEF /* YQTableCell.m */,
+				4427E95F16E8F76F00D72BEF /* YQCellView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -188,8 +196,8 @@
 		49CE963A16E87E050025B70A /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				49CE963F16E888E90025B70A /* YQSwipeGuestureRecognizer.h */,
-				49CE964016E888E90025B70A /* YQSwipeGuestureRecognizer.m */,
+				49CE963F16E888E90025B70A /* YQSwipeGestureRecognizer.h */,
+				49CE964016E888E90025B70A /* YQSwipeGestureRecognizer.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -271,6 +279,7 @@
 				441E93CD16E63A990027CDAF /* Default@2x.png in Resources */,
 				441E93CF16E63A990027CDAF /* Default-568h@2x.png in Resources */,
 				441E93F716E63BBC0027CDAF /* YQListViewController.xib in Resources */,
+				4427E96016E8F76F00D72BEF /* YQCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,7 +318,8 @@
 				441E93C916E63A980027CDAF /* YQAppDelegate.m in Sources */,
 				441E93F616E63BBC0027CDAF /* YQListViewController.m in Sources */,
 				441E93FB16E63C400027CDAF /* YQListView.m in Sources */,
-				49CE964116E888E90025B70A /* YQSwipeGuestureRecognizer.m in Sources */,
+				49CE964116E888E90025B70A /* YQSwipeGestureRecognizer.m in Sources */,
+				4427E95D16E8F57600D72BEF /* YQTableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

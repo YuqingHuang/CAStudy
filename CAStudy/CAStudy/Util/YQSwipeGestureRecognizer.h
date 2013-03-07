@@ -1,5 +1,5 @@
 //
-//  YQSwipeGuestureRecognizer.h
+//  YQSwipeGestureRecognizer.h
 //  CAStudy
 //
 //  Created by Huang Yuqing on 3/7/13.
@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface YQSwipeGuestureRecognizer : UISwipeGestureRecognizer
+@interface YQSwipeGestureRecognizer : UISwipeGestureRecognizer
+
 
 @end

@@ -10,6 +10,16 @@
 #import "YQListView.h"
 
 @interface YQListViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
+
 @property (strong, nonatomic) IBOutlet UITableView *list;
+
+- (void)touchesBegan:(UISwipeGestureRecognizer *)gesture;
+
+- (void)touchesMoved:(UISwipeGestureRecognizer *)gesture;
+
+- (void)touchesEnded:(UISwipeGestureRecognizer *)gesture;
+
+- (void)touchesCancelled:(UISwipeGestureRecognizer *)gesture;
+
 
 @end
