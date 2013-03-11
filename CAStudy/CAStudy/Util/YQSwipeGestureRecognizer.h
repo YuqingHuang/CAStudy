@@ -10,5 +10,8 @@
 
 @interface YQSwipeGestureRecognizer : UISwipeGestureRecognizer
 
+@property (nonatomic, weak) UIView *targetView;
+@property(nonatomic, strong) NSString *towards;
+
 
 @end

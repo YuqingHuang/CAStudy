@@ -10,14 +10,36 @@
 #import "YQListViewController.h"
 #import <UIKit/UIGestureRecognizerSubclass.h>
 
-@implementation YQSwipeGestureRecognizer
+//GestureRecognizer can connect to View (like a controller)
+@implementation YQSwipeGestureRecognizer {
+    CGPoint startPoint;
+    CGPoint currentPoint;
+}
+@synthesize towards;
 
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    startPoint = [(UITouch *) [touches allObjects][0] locationInView:self.targetView];
+
+    NSLog(@"start point: x:%f  y:%f", startPoint.x, startPoint.y);
     [(YQListViewController *)self.delegate touchesBegan:self];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    currentPoint = [(UITouch *) [touches allObjects][0] locationInView:self.targetView];
+
+    if (self.towards == nil) {
+        if (currentPoint.x > startPoint.x) {
+            self.towards = @"right";
+        } else {
+            self.towards = @"left";
+        }
+    }
+    NSLog(@"towards:%@", self.towards);
+
+
+
+    NSLog(@"current point:%f", currentPoint.x);
     [(YQListViewController *)self.delegate touchesMoved:self];
 }
 

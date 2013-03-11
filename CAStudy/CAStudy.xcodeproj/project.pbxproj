@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		368672A97A5441EB9295147D /* YQSwipeGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 36867176F01C2F33964A4067 /* YQSwipeGestureRecognizer.m */; };
 		441E93B916E63A980027CDAF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 441E93B816E63A980027CDAF /* UIKit.framework */; };
 		441E93BB16E63A980027CDAF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 441E93BA16E63A980027CDAF /* Foundation.framework */; };
 		441E93BD16E63A980027CDAF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 441E93BC16E63A980027CDAF /* CoreGraphics.framework */; };
@@ -24,9 +25,8 @@
 		441E93F616E63BBC0027CDAF /* YQListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 441E93F416E63BBC0027CDAF /* YQListViewController.m */; };
 		441E93F716E63BBC0027CDAF /* YQListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 441E93F516E63BBC0027CDAF /* YQListViewController.xib */; };
 		441E93FB16E63C400027CDAF /* YQListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 441E93FA16E63C400027CDAF /* YQListView.m */; };
-		4427E95D16E8F57600D72BEF /* YQTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4427E95C16E8F57600D72BEF /* YQTableCell.m */; };
-		4427E96016E8F76F00D72BEF /* YQCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4427E95F16E8F76F00D72BEF /* YQCellView.xib */; };
-		49CE964116E888E90025B70A /* YQSwipeGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CE964016E888E90025B70A /* YQSwipeGestureRecognizer.m */; };
+		49B4185B16EC929C002749EA /* YQListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B4185A16EC929C002749EA /* YQListCell.m */; };
+		49B4185D16ECA6E7002749EA /* YQListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49B4185C16ECA6E7002749EA /* YQListCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		36867176F01C2F33964A4067 /* YQSwipeGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YQSwipeGestureRecognizer.m; path = Util/YQSwipeGestureRecognizer.m; sourceTree = "<group>"; };
+		36867F0FAA2159C631463B9C /* YQSwipeGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YQSwipeGestureRecognizer.h; path = Util/YQSwipeGestureRecognizer.h; sourceTree = "<group>"; };
 		441E93B416E63A980027CDAF /* CAStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CAStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		441E93B816E63A980027CDAF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		441E93BA16E63A980027CDAF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -64,11 +66,9 @@
 		441E93F516E63BBC0027CDAF /* YQListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQListViewController.xib; sourceTree = "<group>"; };
 		441E93F916E63C400027CDAF /* YQListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YQListView.h; path = View/YQListView.h; sourceTree = "<group>"; };
 		441E93FA16E63C400027CDAF /* YQListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YQListView.m; path = View/YQListView.m; sourceTree = "<group>"; };
-		4427E95B16E8F57600D72BEF /* YQTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YQTableCell.h; path = View/YQTableCell.h; sourceTree = "<group>"; };
-		4427E95C16E8F57600D72BEF /* YQTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YQTableCell.m; path = View/YQTableCell.m; sourceTree = "<group>"; };
-		4427E95F16E8F76F00D72BEF /* YQCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = YQCellView.xib; path = View/YQCellView.xib; sourceTree = "<group>"; };
-		49CE963F16E888E90025B70A /* YQSwipeGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YQSwipeGestureRecognizer.h; path = Util/YQSwipeGestureRecognizer.h; sourceTree = "<group>"; };
-		49CE964016E888E90025B70A /* YQSwipeGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YQSwipeGestureRecognizer.m; path = Util/YQSwipeGestureRecognizer.m; sourceTree = "<group>"; };
+		49B4185916EC929C002749EA /* YQListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YQListCell.h; path = View/YQListCell.h; sourceTree = "<group>"; };
+		49B4185A16EC929C002749EA /* YQListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YQListCell.m; path = View/YQListCell.m; sourceTree = "<group>"; };
+		49B4185C16ECA6E7002749EA /* YQListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = YQListCell.xib; path = View/YQListCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,9 +186,9 @@
 			children = (
 				441E93F916E63C400027CDAF /* YQListView.h */,
 				441E93FA16E63C400027CDAF /* YQListView.m */,
-				4427E95B16E8F57600D72BEF /* YQTableCell.h */,
-				4427E95C16E8F57600D72BEF /* YQTableCell.m */,
-				4427E95F16E8F76F00D72BEF /* YQCellView.xib */,
+				49B4185916EC929C002749EA /* YQListCell.h */,
+				49B4185A16EC929C002749EA /* YQListCell.m */,
+				49B4185C16ECA6E7002749EA /* YQListCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -196,8 +196,8 @@
 		49CE963A16E87E050025B70A /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				49CE963F16E888E90025B70A /* YQSwipeGestureRecognizer.h */,
-				49CE964016E888E90025B70A /* YQSwipeGestureRecognizer.m */,
+				36867F0FAA2159C631463B9C /* YQSwipeGestureRecognizer.h */,
+				36867176F01C2F33964A4067 /* YQSwipeGestureRecognizer.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -279,7 +279,7 @@
 				441E93CD16E63A990027CDAF /* Default@2x.png in Resources */,
 				441E93CF16E63A990027CDAF /* Default-568h@2x.png in Resources */,
 				441E93F716E63BBC0027CDAF /* YQListViewController.xib in Resources */,
-				4427E96016E8F76F00D72BEF /* YQCellView.xib in Resources */,
+				49B4185D16ECA6E7002749EA /* YQListCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,8 +318,8 @@
 				441E93C916E63A980027CDAF /* YQAppDelegate.m in Sources */,
 				441E93F616E63BBC0027CDAF /* YQListViewController.m in Sources */,
 				441E93FB16E63C400027CDAF /* YQListView.m in Sources */,
-				49CE964116E888E90025B70A /* YQSwipeGestureRecognizer.m in Sources */,
-				4427E95D16E8F57600D72BEF /* YQTableCell.m in Sources */,
+				368672A97A5441EB9295147D /* YQSwipeGestureRecognizer.m in Sources */,
+				49B4185B16EC929C002749EA /* YQListCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

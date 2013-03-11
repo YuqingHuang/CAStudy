@@ -6,21 +6,29 @@
 //  Copyright (c) 2013 hyq. All rights reserved.
 //
 
+//TODO: pinch to a line
 #import "YQListViewController.h"
-#import "YQSwipeGestureRecognizer.h"
+#import "YQListCell.h"
 
 @implementation YQListViewController {
     NSMutableArray *_data;
+    int step;
+    int startLocation;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        _list.editing = YES;
+        [self initNeededParameters];
         _data = [@[@"Chapter 1", @"Chapter 2", @"Chapter 3", @"Chapter 4", @"Chapter 5"] mutableCopy];
     }
     return self;
+}
+
+- (void)initNeededParameters {
+    startLocation = 10;
+    step = 5;
 }
 
 - (void)viewDidLoad
@@ -41,19 +49,23 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"line"];
-    cell.textLabel.text = _data[indexPath.row];
-    
-    YQSwipeGestureRecognizer *_leftSwipe = [[YQSwipeGestureRecognizer alloc] initWithTarget:self action:@selector(cellWasSwiped:)];
-    _leftSwipe.delegate = self;
-    _leftSwipe.direction = UISwipeGestureRecognizerDirectionLeft;
-    [cell addGestureRecognizer:_leftSwipe];
-    
-    YQSwipeGestureRecognizer *_rightSwipe = [[YQSwipeGestureRecognizer alloc] initWithTarget:self action:@selector(cellWasSwiped:)];
-    _rightSwipe.delegate = self;
-    _rightSwipe.direction = UISwipeGestureRecognizerDirectionRight;
-    [cell addGestureRecognizer:_rightSwipe];
-    
+    YQListCell *cell = (YQListCell *)[tableView dequeueReusableCellWithIdentifier:@"YQListCell"];
+    if (cell == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"YQListCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
+
+    cell.text.text = _data[indexPath.row];
+    cell.deleteLabel.hidden = YES;
+    cell.completeLabel.hidden = YES;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+    YQSwipeGestureRecognizer *swipeGestureRecognizer = [[YQSwipeGestureRecognizer alloc] initWithTarget:self action:nil];
+    swipeGestureRecognizer.delegate = self;
+    swipeGestureRecognizer.targetView = cell;
+    [cell addGestureRecognizer:swipeGestureRecognizer];
+
     return cell;
 }
 
@@ -66,52 +78,58 @@
     return 50;
 }
 
-- (void)cellWasSwiped:(UISwipeGestureRecognizer *)recognizer {
-    if ([recognizer state] == UIGestureRecognizerStateBegan || [recognizer state] == UIGestureRecognizerStateChanged) {
-        NSLog(@"StateBegan :::::");
-    }
-    if(recognizer.direction == UISwipeGestureRecognizerDirectionLeft){
-        //Swipe from right to left
-        //Do your functions here
-        NSLog(@"Swipe from right to left");
+- (void)touchesBegan:(YQSwipeGestureRecognizer *)gesture {
+    NSLog(@"gesture:%@", gesture);
+
+}
+
+- (void)touchesMoved:(YQSwipeGestureRecognizer *)gesture {
+    if([gesture.towards isEqualToString:@"right"]){
+        YQListCell *currentCell = (YQListCell *) gesture.view;
+        [UIView animateWithDuration:0 animations:^{
+            currentCell.backgroundColor = [UIColor orangeColor];
+            currentCell.completeLabel.hidden = NO;
+            currentCell.text.frame = CGRectMake(startLocation+(step++), 0, 320-startLocation-step+1, 50);
+        }];
     }else{
-        //Swipe from left to right
-        //Do your functions here
-        NSLog(@"Swipe from left to right");
+        YQListCell *currentCell = (YQListCell *) gesture.view;
+        [UIView animateWithDuration:0 animations:^{
+            currentCell.backgroundColor = [UIColor yellowColor];
+            currentCell.deleteLabel.hidden = NO;
+            currentCell.text.frame = CGRectMake(0, 0, 320-startLocation-(step++), 50);
+        }];
     }
 }
 
-- (void)touchesBegan:(UISwipeGestureRecognizer *)gesture {
-    NSLog(@"touchesBegan");
-}
-
-- (void)touchesMoved:(UISwipeGestureRecognizer *)gesture {
+- (void)touchesEnded:(YQSwipeGestureRecognizer *)gesture {
     if(gesture.direction == UISwipeGestureRecognizerDirectionLeft){
-        //Swipe from right to left
-        //Do your functions here
-        NSLog(@"Move from right to left");
+        YQListCell *currentCell = (YQListCell *) gesture.view;
+        [UIView animateWithDuration:1 animations:^{
+            currentCell.text.frame = CGRectMake(0, 0, 320, 50);
+        } completion:^(BOOL finished){
+            [_data removeObjectAtIndex:[self.list indexPathForCell:currentCell].row];
+            [self.list reloadData];
+        }];
     }else{
-        //Swipe from left to right
-        //Do your functions here
-        NSLog(@"Move from left to right");
+        YQListCell *currentCell = (YQListCell *) gesture.view;
+        [UIView animateWithDuration:1 animations:^{
+            currentCell.text.frame = CGRectMake(0, 0, 320, 50);
+        } completion:^(BOOL finished){
+            [_data removeObjectAtIndex:[self.list indexPathForCell:currentCell].row];
+            [self.list reloadData];
+        }];
     }
-    
+    [self initNeededParameters];
 }
 
-- (void)touchesEnded:(UISwipeGestureRecognizer *)gesture {
-    if(gesture.direction == UISwipeGestureRecognizerDirectionLeft){
-        //Swipe from right to left
-        //Do your functions here
-        NSLog(@"Swipe from right to left");
-    }else{
-        //Swipe from left to right
-        //Do your functions here
-        NSLog(@"Swipe from left to right");
-    }
-}
-
-- (void)touchesCancelled:(UISwipeGestureRecognizer *)gesture {
-    NSLog(@"touchesCancel");
+- (void)touchesCancelled:(YQSwipeGestureRecognizer *)gesture {
+    YQListCell *currentCell = (YQListCell *) gesture.view;
+    [UIView animateWithDuration:0.1 animations:^{
+        [self initNeededParameters];
+        currentCell.completeLabel.hidden = YES;
+        currentCell.deleteLabel.hidden = YES;
+        currentCell.text.frame = CGRectMake(0, 0, 320, 50);
+    }];
 }
 
 @end
