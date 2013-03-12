@@ -14,6 +14,7 @@
     NSMutableArray *_data;
     int step;
     int startLocation;
+    UIPinchGestureRecognizer *pinchGestureRecognizer;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -22,6 +23,7 @@
     if (self) {
         [self initNeededParameters];
         _data = [@[@"Chapter 1", @"Chapter 2", @"Chapter 3", @"Chapter 4", @"Chapter 5"] mutableCopy];
+
     }
     return self;
 }
@@ -34,13 +36,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
+    [self.list addGestureRecognizer:pinchGestureRecognizer];
+    self.list.scrollEnabled = NO;
 }
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+//blocked by cell gestures
+- (void)handlePinch:(UIPinchGestureRecognizer *)recognizer {
+    self.list.frame = CGRectMake(0, startLocation+(step++), 320, self.list.frame.size.height-startLocation-step);
 }
 
 #pragma datasource protocol
@@ -102,23 +104,13 @@
 }
 
 - (void)touchesEnded:(YQSwipeGestureRecognizer *)gesture {
-    if(gesture.direction == UISwipeGestureRecognizerDirectionLeft){
-        YQListCell *currentCell = (YQListCell *) gesture.view;
-        [UIView animateWithDuration:1 animations:^{
-            currentCell.text.frame = CGRectMake(0, 0, 320, 50);
-        } completion:^(BOOL finished){
-            [_data removeObjectAtIndex:[self.list indexPathForCell:currentCell].row];
-            [self.list reloadData];
-        }];
-    }else{
-        YQListCell *currentCell = (YQListCell *) gesture.view;
-        [UIView animateWithDuration:1 animations:^{
-            currentCell.text.frame = CGRectMake(0, 0, 320, 50);
-        } completion:^(BOOL finished){
-            [_data removeObjectAtIndex:[self.list indexPathForCell:currentCell].row];
-            [self.list reloadData];
-        }];
-    }
+    YQListCell *currentCell = (YQListCell *) gesture.view;
+    [UIView animateWithDuration:1 animations:^{
+        currentCell.text.frame = CGRectMake(0, 0, 320, 50);
+    } completion:^(BOOL finished){
+        [_data removeObjectAtIndex:[self.list indexPathForCell:currentCell].row];
+        [self.list reloadData];
+    }];
     [self initNeededParameters];
 }
 
@@ -131,5 +123,12 @@
         currentCell.text.frame = CGRectMake(0, 0, 320, 50);
     }];
 }
+
+#pragma gesture delegate
+//TODO: don't work
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return NO;
+}
+
 
 @end

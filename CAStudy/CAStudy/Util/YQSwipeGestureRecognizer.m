@@ -14,12 +14,14 @@
 @implementation YQSwipeGestureRecognizer {
     CGPoint startPoint;
     CGPoint currentPoint;
+    BOOL valid;
 }
 @synthesize towards;
 
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     startPoint = [(UITouch *) [touches allObjects][0] locationInView:self.targetView];
+    valid = NO;
 
     NSLog(@"start point: x:%f  y:%f", startPoint.x, startPoint.y);
     [(YQListViewController *)self.delegate touchesBegan:self];
@@ -28,7 +30,7 @@
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     currentPoint = [(UITouch *) [touches allObjects][0] locationInView:self.targetView];
 
-    if (self.towards == nil) {
+    if (self.towards == nil ) {
         if (currentPoint.x > startPoint.x) {
             self.towards = @"right";
         } else {
@@ -40,15 +42,25 @@
 
 
     NSLog(@"current point:%f", currentPoint.x);
-    [(YQListViewController *)self.delegate touchesMoved:self];
+    if (abs(currentPoint.y-startPoint.y) < 1) {
+        valid = YES;
+        //when valid is NO, how to cancel the gesture.
+        [(YQListViewController *)self.delegate touchesMoved:self];
+    }
+
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    [(YQListViewController *)self.delegate touchesEnded:self];
+    if (valid) {
+        [(YQListViewController *)self.delegate touchesEnded:self];
+    }
 }
 
+//TODO: cancel not work well
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
-    [(YQListViewController *)self.delegate touchesCancelled:self];
+    if (valid) {
+        [(YQListViewController *)self.delegate touchesCancelled:self];
+    }
 }
 
 @end
